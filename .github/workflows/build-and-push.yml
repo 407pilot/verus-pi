@@ -1,25 +1,31 @@
 name: Build and Push Docker Image to GHCR
 
 on:
-  push:
-    branches: [ main ]
+  workflow_dispatch:
+  # push:
+  #   branches: [ main ]
+  #   paths:
+  #     - 'Dockerfile'
+  #     - 'bin/**'
+  #     - '.github/workflows/build-and-push.yml'
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }} # ghcr.io/OWNER/REPO
+  IMAGE_NAME: ${{ github.repository }}  # expands to OWNER/REPO
 
 jobs:
   build-and-push-image:
     runs-on: ubuntu-latest
+
     permissions:
       contents: read
-      packages: write
+      packages: write     # required for pushing to GHCR with GITHUB_TOKEN
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up QEMU
+      - name: Set up QEMU for multi-architecture builds
         uses: docker/setup-qemu-action@v3
 
       - name: Set up Docker Buildx
@@ -32,7 +38,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build and push Docker image (arm64)
+      - name: Build and push Docker image (ARM64)
         uses: docker/build-push-action@v6
         with:
           context: .
