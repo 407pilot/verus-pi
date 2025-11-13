@@ -1,6 +1,6 @@
 services:
   verus-node:
-    image: ghcr.io/407pilot/verus-pi-node:latest
+    image: ghcr.io/407pilot/verus-pi:latest
     container_name: verus-node
     restart: unless-stopped
 
