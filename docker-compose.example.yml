@@ -1,0 +1,39 @@
+services:
+  verus-node:
+    image: ghcr.io/407pilot/verus-pi-node:latest
+    container_name: verus-node
+    restart: unless-stopped
+
+    command:
+      - verusd
+      - -printtoconsole
+      - -dbcache=4096       # 4 GB cache for faster block/UTXO operations
+
+      # -------------------------------------------------
+      # MINER PROFILE (PoW only, NO STAKING)
+      # Use this on the 4 mining Pis.
+      # IMPORTANT:
+      # The Verus staking docs explicitly warn:
+      # “Do not stake with the same wallet.dat on multiple nodes.”
+      # So NEVER enable -mint on miners.
+      # -------------------------------------------------
+      # - -gen=1              # enable PoW mining
+      # - -genproclimit=3     # 3 CPU threads -> mining only
+
+      # -------------------------------------------------
+      # STAKER PROFILE (staking only)
+      # Use this ONLY on the dedicated staking/seed node (.16).
+      # From official staking docs:
+      # Staking is enabled with: `verusd -mint`
+      # Optionally: `-cheatcatcher=zsaddr` for StakeGuard.
+      # -------------------------------------------------
+      - -mint                # enable staking on THIS node only
+      # Optional later:
+      # - -cheatcatcher=zsXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+    ports:
+      - "27485:27485/tcp"    # expose Verus P2P port to LAN if desired
+
+    volumes:
+      - /srv/verus-data/komodo/VRSC:/root/.komodo/VRSC
+      - /srv/verus-data/zcash-params:/root/.zcash-params
