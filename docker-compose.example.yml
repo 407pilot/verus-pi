@@ -11,7 +11,7 @@ services:
 
       # -------------------------------------------------
       # MINER PROFILE (PoW only, NO STAKING)
-      # Use this on the 4 mining Pis.
+      # Use this on the mining Pi(s).
       # IMPORTANT:
       # The Verus staking docs explicitly warn:
       # “Do not stake with the same wallet.dat on multiple nodes.”
@@ -22,14 +22,14 @@ services:
 
       # -------------------------------------------------
       # STAKER PROFILE (staking only)
-      # Use this ONLY on the dedicated staking/seed node (.16).
+      # Use this ONLY on the dedicated staking/seed node.
       # From official staking docs:
       # Staking is enabled with: `verusd -mint`
       # Optionally: `-cheatcatcher=zsaddr` for StakeGuard.
       # -------------------------------------------------
-      - -mint                # enable staking on THIS node only
+      # - -mint                # enable staking on THIS node only
       # Optional later:
-      # - -cheatcatcher=zsXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+      # - -cheatcatcher={replace-with-zs-wallet-address}
 
     ports:
       - "27485:27485/tcp"    # expose Verus P2P port to LAN if desired
