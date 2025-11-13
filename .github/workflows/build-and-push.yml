@@ -39,12 +39,11 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Read version file
-          id: verus_ver
-          run: echo "version=$(cat VERSION)" >> $GITHUB_OUTPUT
+        id: verus_ver
+        run: echo "version=$(cat VERSION)" >> $GITHUB_OUTPUT
 
       - name: Show version being built
-          run: echo "Building version: ${{ steps.verus_ver.outputs.version }}"
-
+        run: echo "Building version: ${{ steps.verus_ver.outputs.version }}"
 
       - name: Build and push Docker image (ARM64)
         uses: docker/build-push-action@v6
