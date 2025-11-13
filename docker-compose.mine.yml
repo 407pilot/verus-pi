@@ -1,0 +1,17 @@
+services:
+  verus-node:
+    build: .
+    container_name: verus-node
+    restart: unless-stopped
+    command:
+      - verusd
+      - -printtoconsole
+      - -dbcache=4096       # use 4 GB cache for faster block/UTXO operations
+      - -gen=1              # enable generation (mining/staking system)
+      - -genproclimit=3     # 3 CPU threads -> PoW mining only
+      - -mint=0             # ensure staking is off
+    ports:
+      - "27485:27485/tcp"   # optional if you want LAN peer connections
+    volumes:
+      - /srv/verus-data/komodo/VRSC:/root/.komodo/VRSC
+      - /srv/verus-data/zcash-params:/root/.zcash-params
