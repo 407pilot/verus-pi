@@ -4,6 +4,8 @@ This repository exists because I needed a clean, reproducible way to build Verus
 
 You can use this repo, but you probably should not use it as-is.
 
+You can access the official VerusCoin repo at [https://github.com/VerusCoin/VerusCoin](https://github.com/VerusCoin/VerusCoin)
+
 ## Why you should not trust this image blindly
 
 Even though this is public, it is still a personal build environment, not an official Verus release. That means:
