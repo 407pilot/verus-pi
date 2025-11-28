@@ -3,13 +3,13 @@ services:
     image: ghcr.io/407pilot/verus-pi:latest
     container_name: verus-node
     restart: unless-stopped
-    stop_signal: SIGTERM
+    stop_signal: SIGTERM # combined with stop_grace_period this prevents docker from forcing verus to close while it is working on the blockchain, preventing blockchain corruption
     stop_grace_period: 10m
     command:
       - verusd
       - -printtoconsole
       - -dbcache=4096 # 4 GB cache for faster block/UTXO operations
-      # - -reindex #if your blockchain won't load, enable this line. After starting the container comment it out.
+      # - -reindex # if your blockchain won't load, enable this line. After starting the container comment it out.
       # -------------------------------------------------
       # MINER PROFILE (PoW only, NO STAKING)
       # Use this on the mining Pi(s).
