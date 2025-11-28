@@ -33,6 +33,6 @@ No, you should not just pull it and trust it.
 
 Build your own image. Verify your own binaries. Do not outsource trust when it comes to crypto infrastructure.
 
-## Buy me a coffee
+## Buy me a coffee ☕️
 
 If you found this useful please consider sending some VerusCoin my way: RC1FuQUmhwWDV3fL3DzPpc79rssBKuLaSu
