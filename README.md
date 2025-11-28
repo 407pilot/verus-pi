@@ -10,6 +10,7 @@ You can access the official VerusCoin repo at [https://github.com/VerusCoin/Veru
 
 Even though this is public, it is still a personal build environment, not an official Verus release. That means:
 
+- You don't know if I know what I am doing. For that matter, *I* don't know if I know what I'm doing.
 - You cannot reasonably verify that the binaries inside the prebuilt container are official.
 - You would be trusting that I (a random person on the internet) did not modify, inject, or accidentally break anything.
 - If something goes wrong, like bugs, security issues, or chain corruption, you are on your own. This is not a supported distribution.
@@ -25,13 +26,6 @@ Use this repo as a template, not a product.
 - Customize it for your Pi, your network, your mining or staking preferences, and whatever checks you want in place.
 
 This way you control what ends up inside the container. That is the entire point of releasing the repo: transparency, not a shortcut.
-
-## TLDR
-
-Yes, you can run the container.  
-No, you should not just pull it and trust it.
-
-Build your own image. Verify your own binaries. Do not outsource trust when it comes to crypto infrastructure.
 
 ## Buy me a coffee ☕️
 
