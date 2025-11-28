@@ -9,7 +9,7 @@ services:
       - verusd
       - -printtoconsole
       - -dbcache=4096 # 4 GB cache for faster block/UTXO operations
-      # - -reindex
+      # - -reindex #if your blockchain won't load, enable this line. After starting the container comment it out.
       # -------------------------------------------------
       # MINER PROFILE (PoW only, NO STAKING)
       # Use this on the mining Pi(s).
